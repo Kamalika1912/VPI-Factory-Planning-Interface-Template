@@ -1,0 +1,21 @@
+{
+  "name": "VPI PLatform",
+  "description": "Virtual Production Intelligence Platform",
+  "keywords": [
+    "css",
+    "js",
+    "less",
+    "responsive",
+    "back-end",
+    "template",
+    "theme",
+    "web",
+    "admin"
+  ],
+  "authors": [
+    {
+      "name": "Kamalika Dutta",
+      "email": "Kamalika.Dutta@ima-zlw-ifu.rwth-aachen.de"
+    }
+  ],
+}

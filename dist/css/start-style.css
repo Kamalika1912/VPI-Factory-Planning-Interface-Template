@@ -1,0 +1,118 @@
+@font-face {
+	font-family: "Trebuchet MS","Myriad Pro",Arial,sans-serif;
+	font-weight: normal;
+	font-style: normal;
+}
+
+*, *:after, *:before { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+body, html { font-size: 100%; padding: 0; margin: 0;}
+
+
+.grid {
+	padding: 20px 20px 20px 20px;
+	max-width: 1300px;
+	margin: 0 auto;
+	list-style: none;
+	text-align: center;
+	-webkit-row-count: 2;
+       -moz-row-count: 2;
+            row-count: 2;
+
+}
+
+.grid li {
+	display: inline-block;
+	width: 420px;
+	margin: 0;
+	padding: 20px;
+	text-align: left;
+	position: relative;
+}
+
+.grid figure {
+	margin: 0;
+	position: relative;
+}
+
+.grid figure img {
+	max-width: 100%;
+	display: block;
+	position: relative;
+}
+
+.grid figcaption {
+	position: absolute;
+	top: 0;
+	left: 0;
+	padding: 20px;
+	background: #2c3f52;
+	color: #ed4e6e;
+}
+
+.grid figcaption h3 {
+	font-family: "Trebuchet MS","Myriad Pro",Arial,sans-serif;
+	margin: 0;
+	padding: 0;
+	color: #fff;
+}
+
+
+/* Caption Style 3 */
+.cs-style-3 figure {
+	overflow: hidden;
+}
+
+.cs-style-3 figure img {
+	-webkit-transition: -webkit-transform 0.4s;
+	-moz-transition: -moz-transform 0.4s;
+	transition: transform 0.4s;
+}
+
+.no-touch .cs-style-3 figure:hover img,
+.cs-style-3 figure.cs-hover img {
+	-webkit-transform: translateY(-25px);
+	-moz-transform: translateY(-25px);
+	-ms-transform: translateY(-25px);
+	transform: translateY(-25px);
+}
+
+.cs-style-3 figcaption {
+	height: 60px;
+	width: 320px;
+	top: auto;
+	left: auto;
+	bottom: 0;
+	opacity: 0;
+	-webkit-transform: translateY(100%);
+	-moz-transform: translateY(100%);
+	-ms-transform: translateY(100%);
+	transform: translateY(100%);
+	-webkit-transition: -webkit-transform 0.4s, opacity 0.1s 0.3s;
+	-moz-transition: -moz-transform 0.4s, opacity 0.1s 0.3s;
+	transition: transform 0.4s, opacity 0.1s 0.3s;
+}
+
+.no-touch .cs-style-3 figure:hover figcaption,
+.cs-style-3 figure.cs-hover figcaption {
+	opacity: 1;
+	-webkit-transform: translateY(0px);
+	-moz-transform: translateY(0px);
+	-ms-transform: translateY(0px);
+	transform: translateY(0px);
+	-webkit-transition: -webkit-transform 0.4s, opacity 0.1s;
+	-moz-transition: -moz-transform 0.4s, opacity 0.1s;
+	transition: transform 0.4s, opacity 0.1s;
+}
+
+
+
+
+@media screen and (max-width: 31.5em) {
+	.grid {
+		padding: 10px 10px 100px 10px;
+	}
+	.grid li {
+		width: 100%;
+		min-width: 200px;
+	}
+}

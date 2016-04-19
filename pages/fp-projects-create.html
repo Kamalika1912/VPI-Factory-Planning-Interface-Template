@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Virtual Production Intelligence | Factory Planning</title>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <!-- Bootstrap 3.3.4 -->
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- Font Awesome Icons -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <!-- Ionicons -->
+    <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+    <!-- Style -->
+    <link href="../dist/css/VPI.min.css" rel="stylesheet" type="text/css" />
+    <!-- daterange picker -->
+    <link href="../plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
+
+    <link href="../dist/css/skins/skin-black.min.css" rel="stylesheet" type="text/css" />
+
+  </head>
+
+  <body class="skin-black sidebar-collapse sidebar-mini">
+    <div class="wrapper">
+
+      <!-- Left side column. contains the logo and sidebar -->
+      <aside class="main-sidebar">
+
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+
+          <!-- Sidebar Toggle -->
+
+          <div class="user-panel">
+            <div class="pull-left image">
+            <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+              <img src="../dist/img/fp_logo_icon.png" class="img-circle" alt="FP Logo" />
+            </a>
+            </div>
+            <div class="pull-left info">
+              <p><h5>Factory Planning</h5></p>
+            </div>
+          </div>
+
+          <!-- Sidebar Menu -->
+          <ul class="sidebar-menu">
+            <li class="header">FACTORY PLANNING</li>
+            <!-- Optionally, you can add icons to the links -->
+            <li class="treeview active">
+              <a href="#"><i class='fa fa-folder'></i> <span>Project Manager</span> <i class="fa fa-angle-left pull-right"></i></a>
+              <ul class="treeview-menu">
+                <li><a href="fp-projects-overview.html">Projects Overview</a></li>
+                <li class="active"><a href="#">Create Project</a></li>
+              </ul>
+            </li>
+            <li class="treeview">
+              <a href="#"><i class='fa fa-pencil-square-o'></i> <span>Data Manager</span> <i class="fa fa-angle-left pull-right"></i></a>
+              <ul class="treeview-menu">
+                <li><a href="fp-data-manager.html">Version Manager</a></li>
+                <li><a href="fp-data-integrator.html">Module Data Integrator  </a></li>
+              </ul>
+            </li>
+            <li class="treeview">
+              <a href="#"><i class='fa fa-eye'></i> <span>Data Viewer</span> <i class="fa fa-angle-left pull-right"></i></a>
+              <ul class="treeview-menu">
+                <li><a href="fp-viewer-overview.html">Data Overview</a></li>
+                <li><a href="fp-viewer-parameter.html">Data per parameter</a></li>
+              </ul>
+            </li>
+            <li class="treeview">
+              <a href="#"><i class='fa fa-pie-chart'></i> <span>Analyst</span> <i class="fa fa-angle-left pull-right"></i></a>
+              <ul class="treeview-menu">
+                <li><a href="fp-analyst-compose.html">Integrative Analysis</a></li>
+                <li><a href="fp-analyst-kpi-dashboard.html">KPI Cockpit</a></li>
+              </ul>
+            </li>
+            <li class="header">DOMAINS</li>
+            <li><a href="home.html"><i class="fa fa-circle-o text-yellow"></i><span>Laser Cutting</span></a></li>
+            <li><a href="home.html"><i class="fa fa-circle-o text-red"></i><span>Material Science</span></a></li>
+            <li><a href="home.html"><i class="fa fa-circle-o text-maroon"></i><span>OPC-UA</span></a></li>
+            <li><a href="home.html"><i class="fa fa-home"></i><span>Home</span></a></li>
+            <li><a href="../index.html"><i class="fa fa-sign-out"></i><span>Logout</span></a></li>
+          </ul><!-- /.sidebar-menu -->
+        </section>
+        <!-- /.sidebar -->
+      </aside>
+
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>New Factory Planning Project</h1>
+          <ol class="breadcrumb">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="fp-projects-overview.html">Factory Planning</a></li>
+            <li class="active">Create Project</li>
+          </ol>
+        </section>
+
+
+        <!-- Main content -->
+        <section class="content">
+
+          <!-- Your Page Content Here -->
+
+            <div class="row">
+              <!-- left column -->
+              <div class="col-md-10 col-sm-10 col-xs-10">
+                <!-- general form elements -->
+                <div class="box box-info">
+
+
+                      <div class="box-header">
+                        <h3 class="box-title">New Project Details</h3>
+                      </div><!-- /.box-header -->
+                      <div class="box-body">
+                        <form role="form">
+                          <!-- text input -->
+                          <div class="form-group">
+                            <label>Project Name</label>
+                            <input type="text" class="form-control" placeholder="Enter name..."/>
+                          </div>
+                          <!-- textarea -->
+                          <div class="form-group">
+                            <label>Description</label>
+                            <textarea class="form-control" rows="3" placeholder="Enter short description..."></textarea>
+                          </div>
+
+
+                          <!-- select language -->
+                          <div class="form-group">
+                            <label>Select Language Landscape</label>
+                            <select class="form-control">
+                              <option>ZBFP Modullandkarte</option>
+                              <option>CBFP Landscape Relevant</option>
+                            </select>
+                          </div>
+                          <!-- select time of planning -->
+                          <div class="form-group">
+                            <label>Time period of planning:</label>
+                            <div class="input-group">
+                              <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                              </div>
+                              <input type="text" class="form-control pull-right" id="reservation" />
+                            </div><!-- /.input group -->
+                          </div><!-- /.form group -->
+
+                        </form>
+                      </div><!-- /.box-body -->
+
+
+              </div>
+
+              <div class="box box-info">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Module Selection</h3>
+                </div>
+                <div class="box-body">
+
+                  <!-- checkbox -->
+                  <div class="form-group">
+
+                    <label>Fabrikstrukturplanungs-Module</label>
+                    <div class="checkbox">
+                      <label><input type="checkbox"/>Arbeitsplatzgestaltung (APG)</label><br>
+                      <label><input type="checkbox"/>Arbeitsvorbereitung (AVB)</label><br>
+                      <label><input type="checkbox"/>Fertigungsmittelplanung (FMP)</label><br>
+                      <label><input type="checkbox"/>IT-Plannung (ITP)</label><br>
+                      <label><input type="checkbox"/>Kapazitätsplanung (KAP)</label><br>
+                      <label><input type="checkbox"/>Layoutplanung (LAY)</label><br>
+                      <label><input type="checkbox"/>Personal und Organisation (PER)</label><br>
+                      <label><input type="checkbox"/>Produktionslogistikplanung (PLP)</label><br>
+                      <label><input type="checkbox"/>Produktionsprogrammanalysis (PRG)</label><br>
+                      <label><input type="checkbox"/>Produktanalyse (PRO)</label><br>
+                      <label><input type="checkbox"/>Produktionstrukturplanung (PSP)</label><br>
+                      <label><input type="checkbox"/>Produktionssteuerungsplanung (PST)</label><br>
+                      <label><input type="checkbox"/>Prozessanalyse (PZA)</label><br>
+                      <label><input type="checkbox"/>Technologiekettenplanung (TKP)</label><br>
+                    </div>
+
+                    <label>Strategisches Planungsmodul</label>
+                    <div class="checkbox">
+                      <label><input type="checkbox"/>Zielplanung (ZPL)</label><br>
+                    </div>
+
+                    <label>Gemeinsame Module</label>
+                    <div class="checkbox">
+                      <label><input type="checkbox"/>Standortauswahl (SAW)</label><br>
+                      <label><input type="checkbox"/>Werksstrukturplanung (WSP)</label><br>
+                    </div>
+
+                    <label>Projektmanagement</label>
+                    <div class="checkbox">
+                      <label><input type="checkbox"/>Umsetzungsplanung (UMS)</label><br>
+                      <label><input type="checkbox"/>Wirtschaftlichkeitsberechnung (WIB)</label><br>
+                    </div>
+
+                    <label>Industriebau-Modul</label>
+                    <div class="checkbox">
+                      <label><input type="checkbox"/>Außenanlagenplanung (AAP)</label><br>
+                      <label><input type="checkbox"/>Architektonische (ATP)</label><br>
+                      <label><input type="checkbox"/>Plannung der Abwasser (AWG)</label><br>
+                      <label><input type="checkbox"/>Brandschutyplannung (BSP)</label><br>
+                      <label><input type="checkbox"/>Energie und Bauphzsikplannung (EBP)</label><br>
+                      <label><input type="checkbox"/>Plannung der Fernmelde (FIA)</label><br>
+                      <label><input type="checkbox"/>Fertigungsplannung (FP)</label><br>
+                      <label><input type="checkbox"/>Gebäudeautomationsplannung (GAP)</label><br>
+                      <label><input type="checkbox"/>Gründungs und Bodenbela (GBB)</label><br>
+                      <label><input type="checkbox"/>Innenausbauplannung (IAP)</label><br>
+                      <label><input type="checkbox"/>Planung der Kälteanlagen (KVA)</label><br>
+                      <label><input type="checkbox"/>PLanung der raumlufttechnik (RTA)</label><br>
+                      <label><input type="checkbox"/>Starkstromanlagenplanung (SAP)</label><br>
+                      <label><input type="checkbox"/>Tragwerksplanung (TWP)</label><br>
+                      <label><input type="checkbox"/>Planung der Wärmevversor (WVA)</label><br>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="box box-success">
+          <div class="box-body">
+            <div class="box-footer">
+              <a href="fp-projects-overview.html">
+              <button type="submit" class="btn btn-default btn-flat btn-lg bg-green">Submit</button>
+              </a>
+            </div>
+          </div>
+        </div>
+
+
+
+
+        </section><!-- /.content -->
+      </div><!-- /.content-wrapper -->
+
+      <!-- Main Footer -->
+      <footer class="main-footer">
+        <!-- To the right -->
+        <div class="pull-right hidden-xs">
+          Anything you want
+        </div>
+        <!-- Default to the left -->
+        Creating new project. <strong><a href="fp-data-manager.html"> Manage Data</a></strong>
+      </footer>
+
+    <!-- REQUIRED JS SCRIPTS -->
+
+    <!-- jQuery 2.1.4 -->
+    <script src="../plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <!-- Bootstrap 3.3.2 JS -->
+    <script src="../bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <!-- App.js -->
+    <script src="../dist/js/app.min.js" type="text/javascript"></script>
+
+  </body>
+</html>

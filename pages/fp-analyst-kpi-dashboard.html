@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Virtual Production Intelligence | Factory Planning</title>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <!-- Bootstrap 3.3.4 -->
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- Font Awesome Icons -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <!-- Ionicons -->
+    <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+    <!-- Style -->
+    <link href="../dist/css/VPI.min.css" rel="stylesheet" type="text/css" />
+    <link href="../dist/css/legend.css" rel="stylesheet" type="text/css" />
+
+    <link href="../dist/css/skins/skin-black.min.css" rel="stylesheet" type="text/css" />
+
+  </head>
+
+  <body class="skin-black sidebar-collapse sidebar-mini">
+    <div class="wrapper">
+
+      <!-- Left side column. contains the logo and sidebar -->
+      <aside class="main-sidebar">
+
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+
+          <!-- Sidebar Toggle -->
+
+          <div class="user-panel">
+            <div class="pull-left image">
+            <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+              <img src="../dist/img/fp_logo_icon.png" class="img-circle" alt="FP Logo" />
+            </a>
+            </div>
+            <div class="pull-left info">
+              <p><h5>Factory Planning</h5></p>
+            </div>
+          </div>
+
+
+          <!-- Sidebar Menu -->
+          <ul class="sidebar-menu">
+            <li class="header">FACTORY PLANNING</li>
+            <!-- Optionally, you can add icons to the links -->
+            <li class="treeview">
+              <a href="#"><i class='fa fa-folder'></i> <span>Project Manager</span> <i class="fa fa-angle-left pull-right"></i></a>
+              <ul class="treeview-menu">
+                <li><a href="fp-projects-overview.html">Projects Overview</a></li>
+                <li><a href="fp-projects-create.html">Create Project</a></li>
+              </ul>
+            </li>
+            <li class="treeview">
+              <a href="#"><i class='fa fa-pencil-square-o'></i> <span>Data Manager</span> <i class="fa fa-angle-left pull-right"></i></a>
+              <ul class="treeview-menu">
+                <li><a href="fp-data-manager.html">Version Manager</a></li>
+                <li><a href="fp-data-integrator.html">Module Data Integrator </a></li>
+              </ul>
+            </li>
+            <li class="treeview">
+              <a href="#"><i class='fa fa-eye'></i> <span>Data Viewer</span> <i class="fa fa-angle-left pull-right"></i></a>
+              <ul class="treeview-menu">
+                <li><a href="fp-viewer-overview.html">Data Overview</a></li>
+                <li><a href="fp-viewer-parameter.html">Data per parameter</a></li>
+              </ul>
+            </li>
+            <li class="treeview active">
+              <a href="#"><i class='fa fa-pie-chart'></i> <span>Analyst</span> <i class="fa fa-angle-left pull-right"></i></a>
+              <ul class="treeview-menu">
+                <li><a href="fp-analyst-compose.html">Compose Analysis</a></li>
+                <li class="active"><a href="fp-analyst-kpi-dashboard.html">KPI Dashboard</a></li>
+              </ul>
+            </li>
+            <li class="header">DOMAINS</li>
+            <li><a href="home.html"><i class="fa fa-circle-o text-yellow"></i><span>Laser Cutting</span></a></li>
+            <li><a href="home.html"><i class="fa fa-circle-o text-red"></i><span>Material Science</span></a></li>
+            <li><a href="home.html"><i class="fa fa-circle-o text-maroon"></i><span>OPC-UA</span></a></li>
+            <li><a href="home.html"><i class="fa fa-home"></i><span>Home</span></a></li>
+            <li><a href="../index.html"><i class="fa fa-sign-out"></i><span>Logout</span></a></li>
+
+          </ul><!-- /.sidebar-menu -->
+        </section>
+        <!-- /.sidebar -->
+      </aside>
+
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>Analyst <small> </small></h1>
+          <ol class="breadcrumb">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="fp-projects-overview.html">Factory Planning</a></li>
+            <li class="active">KPI Cockpit</li>
+          </ol>
+        </section>
+
+
+        <!-- Main content -->
+        <!-- Main content -->
+        <section class="content">
+          <div class="row">
+            <div class="col-md-6">
+
+              <!-- AREA CHART -->
+              <div class="box box-primary">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Area Chart</h3>
+                  <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                  </div>
+                </div>
+                <div class="box-body">
+                  <div class="row">
+                    <div class="col-md-8">
+                    <canvas id="areaChart" height="250"></canvas>
+                  </div>
+                  <div class="col-md-4">
+                    <div id="areaLegendDiv"></div>
+                  </div>
+                  <div class="col-md-4">
+                    <ul class="chart-legend clearfix">
+                      <li><i class="fa fa-circle-o text-red"></i> Chrome</li>
+                      <li><i class="fa fa-circle-o text-light-blue"></i> Opera</li>
+                    </ul>
+                  </div><!-- /.col -->
+                  </div>
+                </div><!-- /.box-body -->
+                <div class="box-footer no-padding">
+                  <ul class="nav nav-pills nav-stacked">
+                    <li><a href="#">Info 1 <span class="pull-right text-red"><i class="fa fa-angle-down"></i> 12%</span></a></li>
+                    <li><a href="#">Info 2 <span class="pull-right text-green"><i class="fa fa-angle-up"></i> 4%</span></a></li>
+                    <li><a href="#">Info 3 <span class="pull-right text-yellow"><i class="fa fa-angle-left"></i> 0%</span></a></li>
+                  </ul>
+                </div><!-- /.footer -->
+              </div><!-- /.box -->
+
+              <!-- DONUT CHART -->
+              <div class="box box-danger">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Donut Chart</h3>
+                  <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                  </div>
+                </div>
+                <div class="box-body">
+                  <div class="row">
+                    <div class="col-md-8">
+                    <canvas id="pieChart" height="250"></canvas>
+                  </div>
+                  <div class="col-md-4">
+                    <div id="donutLegendDiv"></div>
+                  </div>
+                  <div class="col-md-4">
+                    <ul class="chart-legend clearfix">
+                      <li><i class="fa fa-circle-o text-red"></i> Chrome</li>
+                      <li><i class="fa fa-circle-o text-green"></i> IE</li>
+                      <li><i class="fa fa-circle-o text-yellow"></i> FireFox</li>
+                      <li><i class="fa fa-circle-o text-aqua"></i> Safari</li>
+                      <li><i class="fa fa-circle-o text-light-blue"></i> Opera</li>
+                      <li><i class="fa fa-circle-o text-gray"></i> Navigator</li>
+                    </ul>
+                  </div><!-- /.col -->
+                  </div>
+                </div><!-- /.box-body -->
+                <div class="box-footer no-padding">
+                  <ul class="nav nav-pills nav-stacked">
+                    <li><a href="#">Info 1 <span class="pull-right text-red"><i class="fa fa-angle-down"></i> 12%</span></a></li>
+                    <li><a href="#">Info 2 <span class="pull-right text-green"><i class="fa fa-angle-up"></i> 4%</span></a></li>
+                    <li><a href="#">Info 3 <span class="pull-right text-yellow"><i class="fa fa-angle-left"></i> 0%</span></a></li>
+                  </ul>
+                </div><!-- /.footer -->
+              </div><!-- /.box -->
+
+
+              <div class="box box-danger">
+                <div class="box-header with-border">
+                  <h3 class="box-title">E-Scooter Produktanalyse</h3>
+                  <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                  </div>
+                </div>
+                <div class="box-body">
+                  <div class="row">
+                    <div class="col-md-8">
+                    <canvas id="pieChart2" height="250"></canvas>
+                  </div>
+                  <div class="col-md-4">
+                    <div id="pieLegendDiv"></div>
+                  </div>
+                  <div class="col-md-4">
+                    <ul class="chart-legend clearfix">
+                      <li><i class="fa fa-circle-o text-red"></i> A</li>
+                      <li><i class="fa fa-circle-o text-green"></i> B</li>
+                      <li><i class="fa fa-circle-o text-yellow"></i> C</li>
+                      <li><i class="fa fa-circle-o text-aqua"></i> D</li>
+                      <li><i class="fa fa-circle-o text-light-blue"></i> E</li>
+                      <li><i class="fa fa-circle-o text-gray"></i> F</li>
+                    </ul>
+                  </div><!-- /.col -->
+                  </div>
+                </div><!-- /.box-body -->
+                <div class="box-footer no-padding">
+                  <ul class="nav nav-pills nav-stacked">
+                    <li><a href="#">Info 1 <span class="pull-right text-red"><i class="fa fa-angle-down"></i> 12%</span></a></li>
+                    <li><a href="#">Info 2 <span class="pull-right text-green"><i class="fa fa-angle-up"></i> 4%</span></a></li>
+                    <li><a href="#">Info 3 <span class="pull-right text-yellow"><i class="fa fa-angle-left"></i> 0%</span></a></li>
+                  </ul>
+                </div><!-- /.footer -->
+              </div><!-- /.box -->
+
+            </div><!-- /.col (LEFT) -->
+
+            <div class="col-md-6">
+              <!-- LINE CHART -->
+              <div class="box box-info">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Daten-Vollstaendigkeit der Planungsmodule</h3>
+                  <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                  </div>
+                </div>
+                <div class="box-body">
+                  <div class="chart">
+                    <div class="row">
+                      <div class="col-md-8">
+                      <canvas id="lineChart" height="240"></canvas>
+                      </div>
+                    <div class="col-md-4">
+                    <div id="lineLegendDiv">
+                    </div>
+                    </div>
+                    <div class="col-md-4">
+                      <ul class="chart-legend clearfix">
+                        <li><i class="fa fa-circle-o text-red"></i> A</li>
+                        <li><i class="fa fa-circle-o text-green"></i> B</li>
+                        <li><i class="fa fa-circle-o text-yellow"></i> C</li>
+                        <li><i class="fa fa-circle-o text-aqua"></i>D</li>
+                        <li><i class="fa fa-circle-o text-light-blue"></i> E</li>
+                        <li><i class="fa fa-circle-o text-gray"></i> F</li>
+                      </ul>
+                    </div><!-- /.col -->
+                    </div>
+                  </div>
+                </div><!-- /.box-body -->
+                <div class="box-footer no-padding">
+                  <ul class="nav nav-pills nav-stacked">
+                    <li><a href="#">Info 1 <span class="pull-right text-red"><i class="fa fa-angle-down"></i> 12%</span></a></li>
+                    <li><a href="#">Info 2 <span class="pull-right text-green"><i class="fa fa-angle-up"></i> 4%</span></a></li>
+                    <li><a href="#">Info 3 <span class="pull-right text-yellow"><i class="fa fa-angle-left"></i> 0%</span></a></li>
+                  </ul>
+                </div><!-- /.footer -->
+              </div><!-- /.box -->
+
+              <!-- BAR CHART -->
+              <div class="box box-success">
+                <div class="box-header with-border">
+                  <h3 class="box-title">E-Scooter Absatzprognose</h3>
+                  <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                  </div>
+                </div>
+                <div class="box-body">
+                  <div class="chart">
+                    <div class="row">
+                      <div class="col-md-8">
+                      <canvas id="barChart" height="300"></canvas>
+                      </div>
+                      <div class="col-md-4">
+                        <div id="barLegendDiv"></div>
+                      </div>
+                    <div class="col-md-4">
+                      <ul class="chart-legend clearfix">
+                        <li><i class="fa fa-circle-o text-light-blue"></i> Cruise 2,2 kW</li>
+                        <li><i class="fa fa-circle-o text-green"></i> Standard 1,5 kW</li>
+                        <li><i class="fa fa-circle-o text-red"></i> Race 3 kW</li>
+                      </ul>
+                    </div><!-- /.col -->
+                    </div>
+                  </div>
+
+                </div><!-- /.box-body -->
+                <div class="box-footer no-padding">
+                  <ul class="nav nav-pills nav-stacked">
+                    <li><a href="#">Info 1 <span class="pull-right text-red"><i class="fa fa-angle-down"></i> 12%</span></a></li>
+                    <li><a href="#">Info 2 <span class="pull-right text-green"><i class="fa fa-angle-up"></i> 4%</span></a></li>
+                    <li><a href="#">Info 3 <span class="pull-right text-yellow"><i class="fa fa-angle-left"></i> 0%</span></a></li>
+                  </ul>
+                </div><!-- /.footer -->
+              </div><!-- /.box -->
+
+            </div><!-- /.col (RIGHT) -->
+          </div><!-- /.row -->
+
+          <div class="box box-default">
+            <div class="box-header with-border">
+              <h3 class="box-title">Browser Usage</h3>
+              <div class="box-tools pull-right">
+                <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div><!-- /.box-header -->
+            <div class="box-body">
+              <div class="row">
+                <div class="col-md-8">
+                  <div class="chart-responsive">
+                    <canvas id="pieChart" height="150"></canvas>
+                  </div><!-- ./chart-responsive -->
+                </div><!-- /.col -->
+                <div class="col-md-4">
+                  <ul class="chart-legend clearfix">
+                    <li><i class="fa fa-circle-o text-red"></i> Chrome</li>
+                    <li><i class="fa fa-circle-o text-green"></i> IE</li>
+                    <li><i class="fa fa-circle-o text-yellow"></i> FireFox</li>
+                    <li><i class="fa fa-circle-o text-aqua"></i> Safari</li>
+                    <li><i class="fa fa-circle-o text-light-blue"></i> Opera</li>
+                    <li><i class="fa fa-circle-o text-gray"></i> Navigator</li>
+                  </ul>
+                </div><!-- /.col -->
+              </div><!-- /.row -->
+            </div><!-- /.box-body -->
+            <div class="box-footer no-padding">
+              <ul class="nav nav-pills nav-stacked">
+                <li><a href="#">Info 1 <span class="pull-right text-red"><i class="fa fa-angle-down"></i> 12%</span></a></li>
+                <li><a href="#">Info 2 <span class="pull-right text-green"><i class="fa fa-angle-up"></i> 4%</span></a></li>
+                <li><a href="#">Info 3 <span class="pull-right text-yellow"><i class="fa fa-angle-left"></i> 0%</span></a></li>
+              </ul>
+            </div><!-- /.footer -->
+          </div><!-- /.box -->
+
+        </section><!-- /.content -->
+      </div><!-- /.content-wrapper -->
+
+
+      <!-- Main Footer -->
+      <footer class="main-footer">
+        <!-- To the right -->
+        <div class="pull-right hidden-xs">
+
+        </div>
+        <!-- Default to the left -->
+        <strong>PROJECT XYZ Selected. Version 1.0.2 <a href="#">View Project</a>.</strong> More details.
+      </footer>
+
+      <!-- jQuery 2.1.4 -->
+      <script src="../plugins/jQuery/jQuery-2.1.4.min.js"></script>
+      <!-- Bootstrap 3.3.2 JS -->
+      <script src="../bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+      <!-- ChartJS 1.0.1 -->
+      <script src="../plugins/chartjs/Chart.min.js" type="text/javascript"></script>
+      <!-- FastClick -->
+      <script src='../plugins/fastclick/fastclick.min.js'></script>
+      <!-- App.js -->
+      <script src="../dist/js/app.min.js" type="text/javascript"></script>
+      <!-- Demo -->
+      <script src="../dist/js/demo.js" type="text/javascript"></script>
+
+      <script src="../plugins/chartjs/legend.js" type="text/javascript"></script>
+
+      <!-- page script -->
+      <script>
+        $(function () {
+          //--------------
+          //- AREA CHART -
+          //--------------
+
+          // Get context with jQuery - using jQuery's .get() method.
+          var areaChartCanvas = $("#areaChart").get(0).getContext("2d");
+          // This will get the first returned node in the jQuery collection.
+          var areaChart = new Chart(areaChartCanvas);
+
+          var areaChartData = {
+            labels: ["January", "February", "March", "April", "May", "June", "July"],
+            datasets: [
+              {
+                label: "BETTER DRONE",
+                fillColor: "rgba(245,105,84,1)",
+                strokeColor: "rgba(245,105,84,1)",
+                pointColor: "#f56954",
+                pointStrokeColor: "rgba(245,105,84,1)",
+                pointHighlightFill: "#f56954",
+                pointHighlightStroke: "rgba(245,105,84,1)",
+                data: [65, 59, 80, 81, 56, 55, 40]
+              },
+              {
+                label: "E-SCOOTER",
+                fillColor: "rgba(60,141,188,0.9)",
+                strokeColor: "rgba(60,141,188,0.8)",
+                pointColor: "#3b8bba",
+                pointStrokeColor: "rgba(60,141,188,1)",
+                pointHighlightFill: "#3b8bba",
+                pointHighlightStroke: "rgba(60,141,188,1)",
+                data: [28, 48, 40, 19, 86, 27, 90]
+              }
+            ]
+          };
+
+          var areaChartOptions = {
+            //Boolean - If we should show the scale at all
+            showScale: true,
+            //Boolean - Whether grid lines are shown across the chart
+            scaleShowGridLines: false,
+            //String - Colour of the grid lines
+            scaleGridLineColor: "rgba(0,0,0,.05)",
+            //Number - Width of the grid lines
+            scaleGridLineWidth: 1,
+            //Boolean - Whether to show horizontal lines (except X axis)
+            scaleShowHorizontalLines: true,
+            //Boolean - Whether to show vertical lines (except Y axis)
+            scaleShowVerticalLines: true,
+            //Boolean - Whether the line is curved between points
+            bezierCurve: true,
+            //Number - Tension of the bezier curve between points
+            bezierCurveTension: 0.3,
+            //Boolean - Whether to show a dot for each point
+            pointDot: false,
+            //Number - Radius of each point dot in pixels
+            pointDotRadius: 4,
+            //Number - Pixel width of point dot stroke
+            pointDotStrokeWidth: 1,
+            //Number - amount extra to add to the radius to cater for hit detection outside the drawn point
+            pointHitDetectionRadius: 20,
+            //Boolean - Whether to show a stroke for datasets
+            datasetStroke: true,
+            //Number - Pixel width of dataset stroke
+            datasetStrokeWidth: 2,
+            //Boolean - Whether to fill the dataset with a color
+            datasetFill: true,
+            //String - A legend template
+            legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].fillColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>",
+            //Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+            maintainAspectRatio: false,
+            //Boolean - whether to make the chart responsive to window resizing
+            responsive: true
+          };
+
+          var myAreaChart = new Chart(document.getElementById("areaChart").getContext("2d")).Line(areaChartData, areaChartOptions);
+              document.getElementById("areaLegendDiv").innerHTML = myAreaChart.generateLegend();
+
+          legend(document.getElementById("areaLegendDiv"), areaChartData);
+
+
+
+          //-------------
+          //- LINE CHART -
+          //--------------
+          var lineChartData = {
+            labels: ["January", "February", "March", "April", "May", "June", "July"],
+            datasets: [
+              {
+                label: "A",
+                fillColor: "rgba(245,105,84,0.9)",
+                strokeColor: "rgba(245,105,84,0.9)",
+                pointColor: "#f56954",
+                pointStrokeColor: "rgba(245,105,84,0.9)",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(245,105,84,0.9)",
+                data: [73, 60, 15, 81, 56, 64, 40]
+              },
+              {
+                label: "B",
+                fillColor: "rgba(60,141,188,0.9)",
+                strokeColor: "rgba(60,141,188,0.8)",
+                pointColor: "#3b8bba",
+                pointStrokeColor: "rgba(60,141,188,1)",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(60,141,188,1)",
+                data: [28, 90, 40, 19, 86, 27, 90]
+              }
+            ]
+          };
+
+
+
+          var lineChartCanvas = $("#lineChart").get(0).getContext("2d");
+          var lineChart = new Chart(lineChartCanvas);
+          var lineChartOptions = areaChartOptions;
+          //Create the line chart
+          areaChart.Line(areaChartData, areaChartOptions);
+          lineChartOptions.datasetFill = false;
+          lineChart.Line(lineChartData, lineChartOptions);
+
+          var myLineChart = new Chart(document.getElementById("lineChart").getContext("2d")).Line(lineChartData, lineChartOptions);
+              document.getElementById("lineLegendDiv").innerHTML = myLineChart.generateLegend();
+
+          legend(document.getElementById("lineLegendDiv"), lineChartData);
+
+          //-------------
+          //- PIE CHART -
+          //-------------
+          // Get context with jQuery - using jQuery's .get() method.
+          var pieChartCanvas = $("#pieChart").get(0).getContext("2d");
+          var pieChart = new Chart(pieChartCanvas);
+          var pieChartCanvas = $("#pieChart2").get(0).getContext("2d");
+          var pieChart2 = new Chart(pieChartCanvas);
+          var PieData = [
+            {
+              value: 400,
+              color: "#f56954",
+              highlight: "#f56954",
+              label: "A"
+            },
+            {
+              value: 500,
+              color: "#00a65a",
+              highlight: "#00a65a",
+              label: "B"
+            },
+            {
+              value: 400,
+              color: "#f39c12",
+              highlight: "#f39c12",
+              label: "C"
+            },
+            {
+              value: 600,
+              color: "#00c0ef",
+              highlight: "#00c0ef",
+              label: "D"
+            },
+            {
+              value: 300,
+              color: "#3c8dbc",
+              highlight: "#3c8dbc",
+              label: "E"
+            },
+            {
+              value: 100,
+              color: "#d2d6de",
+              highlight: "#d2d6de",
+              label: "F"
+            }
+          ];
+          var PieData2 = [
+            {
+              value: 100,
+              color: "#f56954",
+              highlight: "#f56954",
+              label: "A"
+            },
+            {
+              value: 500,
+              color: "#00a65a",
+              highlight: "#00a65a",
+              label: "B"
+            },
+            {
+              value: 400,
+              color: "#f39c12",
+              highlight: "#f39c12",
+              label: "C"
+            },
+            {
+              value: 800,
+              color: "#00c0ef",
+              highlight: "#00c0ef",
+              label: "D"
+            },
+            {
+              value: 600,
+              color: "#3c8dbc",
+              highlight: "#3c8dbc",
+              label: "E"
+            },
+            {
+              value: 200,
+              color: "#d2d6de",
+              highlight: "#d2d6de",
+              label: "F"
+            }
+          ];
+          var pieOptions = {
+            //Boolean - Whether we should show a stroke on each segment
+            segmentShowStroke: true,
+            //String - The colour of each segment stroke
+            segmentStrokeColor: "#fff",
+            //Number - The width of each segment stroke
+            segmentStrokeWidth: 2,
+            //Number - The percentage of the chart that we cut out of the middle
+            percentageInnerCutout: 50, // This is 0 for Pie charts
+            //Number - Amount of animation steps
+            animationSteps: 100,
+            //String - Animation easing effect
+            animationEasing: "easeOutBounce",
+            //Boolean - Whether we animate the rotation of the Doughnut
+            animateRotate: true,
+            //Boolean - Whether we animate scaling the Doughnut from the centre
+            animateScale: false,
+            //Boolean - whether to make the chart responsive to window resizing
+            responsive: true,
+            // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+            maintainAspectRatio: false,
+            //String - A legend template
+            legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>"
+          };
+          //Create pie or douhnut chart
+          // You can switch between pie and douhnut using the method below.
+          pieChart.Doughnut(PieData, pieOptions);
+          pieChart2.Pie(PieData2, pieOptions);
+          legend(document.getElementById("donutLegendDiv"), PieData);
+          legend(document.getElementById("pieLegendDiv"), PieData2);
+
+          //-------------
+          //- BAR CHART -
+          //-------------
+          var barChartData = {
+            labels: ["Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"],
+            datasets: [
+              {
+                label: "Cruise 2,2 kW",
+                fillColor: "rgba(60,141,188,0.9)",
+                strokeColor: "rgba(60,141,188,0.8)",
+                pointColor: "#3b8bba",
+                pointStrokeColor: "rgba(60,141,188,1)",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(60,141,188,1)",
+                data: [25, 30, 35, 45, 56, 55, 40]
+              },
+              {
+                label: "Standard 1,5 kW",
+                fillColor: "rgba(60,141,188,0.9)",
+                strokeColor: "rgba(60,141,188,0.8)",
+                pointColor: "#3b8bba",
+                pointStrokeColor: "rgba(60,141,188,1)",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(60,141,188,1)",
+                data: [38, 48, 54, 60, 70, 78, 89]
+              },
+              {
+                label: "Race 3 kW",
+                fillColor: "rgba(245,105,84,0.9)",
+                strokeColor: "rgba(245,105,84,0.9)",
+                pointColor: "#3b8bba",
+                pointStrokeColor: "rgba(60,141,188,1)",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(60,141,188,1)",
+                data: [15, 15, 17, 19, 24, 27, 44]
+              }
+            ]
+          };
+          var barChartCanvas = $("#barChart").get(0).getContext("2d");
+          var barChart = new Chart(barChartCanvas);
+          barChartData.datasets[1].fillColor = "#00a65a";
+          barChartData.datasets[1].strokeColor = "#00a65a";
+          barChartData.datasets[1].pointColor = "#00a65a";
+          var barChartOptions = {
+            //Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
+            scaleBeginAtZero: true,
+            //Boolean - Whether grid lines are shown across the chart
+            scaleShowGridLines: true,
+            //String - Colour of the grid lines
+            scaleGridLineColor: "rgba(0,0,0,.05)",
+            //Number - Width of the grid lines
+            scaleGridLineWidth: 1,
+            //Boolean - Whether to show horizontal lines (except X axis)
+            scaleShowHorizontalLines: true,
+            //Boolean - Whether to show vertical lines (except Y axis)
+            scaleShowVerticalLines: true,
+            //Boolean - If there is a stroke on each bar
+            barShowStroke: true,
+            //Number - Pixel width of the bar stroke
+            barStrokeWidth: 2,
+            //Number - Spacing between each of the X value sets
+            barValueSpacing: 5,
+            //Number - Spacing between data sets within X values
+            barDatasetSpacing: 1,
+            //String - A legend template
+            legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].fillColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>",
+            //Boolean - whether to make the chart responsive
+            responsive: true,
+            maintainAspectRatio: false
+          };
+
+          barChartOptions.datasetFill = false;
+          barChart.Bar(barChartData, barChartOptions);
+          legend(document.getElementById("barLegendDiv"), barChartData);
+        });
+      </script>
+    </body>
+  </html>
